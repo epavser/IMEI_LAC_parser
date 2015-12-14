@@ -79,7 +79,11 @@ output_count_imei.close()
 for line in imei_tac_raw:
     words = line.split("\t")
     imei_tac_list.append(words[0])
-    model.append(str(words[1:]))
+    descr = str()
+    for w in words[1:]:
+        descr = descr + '\t' + str(w.rstrip())
+    model.append(descr)
+
 
 # In sorted list of tuples where key = number of IMEI TACs in LAC, value = IMEI TAC, find all IMEI TACs exist in IMEI-Model database and create output string
 
