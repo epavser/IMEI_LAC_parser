@@ -82,7 +82,7 @@ for line in imei_tac_raw:
     model.append(str(words[1:]))
 
 # In sorted list of tuples where key = number of IMEI TACs in LAC, value = IMEI TAC, find all IMEI TACs exist in IMEI-Model database and create output string
-
+#blalbla
 
 for key, val in l:
     for n in imei_tac_list:
