@@ -10,7 +10,7 @@ output_lac_imei= open ('output_lac_imei.txt', 'w')
 output_count_imei= open ('output_count_imei.txt', 'w')
 output_imei_tac_model= open ('output_imei_tac_model.txt', 'w')
 input_lac = open ('lacs.txt')
-imei_tac_raw = open ('IMEI_TAC_raw.txt')
+imei_tac_raw = open ('MSRPLUS20151208.txt')
 lac_imei = list()
 imei_count = dict()
 lac_rac_cgi = str()
@@ -77,7 +77,7 @@ output_count_imei.close()
 # parse IMEI-Model database and extract IMEI TAC from it, create list of IMEI TACs and list of  UE models
 
 for line in imei_tac_raw:
-    words = line.split("\t")
+    words = line.split("|")
     imei_tac_list.append(words[0])
     descr = str()
     for w in words[1:]:
@@ -90,7 +90,7 @@ for line in imei_tac_raw:
 for key, val in l:
     for n in imei_tac_list:
         if val == n:
-            line_out = str(key) +  '\t ' + str(val) + '\t' + str(model[imei_tac_list.index(n)]) +  '\n'
+            line_out = str(key) +  '\t' + str(val) + '\t' + str(model[imei_tac_list.index(n)]) +  '\n'
             output_imei_tac_model.write(line_out)
 
 output_imei_tac_model.close()
